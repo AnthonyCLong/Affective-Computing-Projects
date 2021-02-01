@@ -1,3 +1,4 @@
+import sys
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import svm, datasets
@@ -42,6 +43,17 @@ def plot_contours(ax, clf, xx, yy, **params):
     out = ax.contourf(xx, yy, Z, **params)
     return out
 
+switch = {
+    'dia': 1,
+    'sys': 2,
+    'eda': 3,
+    'res': 4,
+    'all': 0
+}
+    # Get the function from switcher dictionary
+utype = switch.get(sys.argv[1].lower(), -1)
+if utype < 0:
+    exit()
 
 # import some data to play with
 iris = datasets.load_iris()
