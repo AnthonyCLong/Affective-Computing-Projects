@@ -107,16 +107,14 @@ def main():
   ids, data = load_data(indexes)
   df = make_features(ids, data, indexes)
   #dealing with bad values
-  df.replace(["inf", "-inf", "nan"], 0, inplace=True)
-
-  # features = df[df.columns.difference(['ids', 'label'])]
-  # features.to_csv('features.csv', index=False)
+  df.replace(["inf", "-inf", "NaN","nan"], 0, inplace=True)
 
   # x is all colums except first 2, y is labels
-  X = df.iloc[:, 2:]
+  X = df.iloc[:, 2:].astype('float32')
   y = df["label"]
-  # X.astype('float32').dtypes
-  # features.astype('float32').dtypes
+
+  # X.plot(kind="box")
+  # plt.show()
 
   #classifier and folds defined
   rf = RandomForestClassifier(max_depth=10, random_state=0)
