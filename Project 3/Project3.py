@@ -1,15 +1,11 @@
 from operator import index
-import time
 import sys
 import csv
 import numpy as np
-from numpy import testing
 import pandas as pd
-import matplotlib.pyplot as plt
-from scipy.stats import entropy
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, precision_score
-from sklearn.model_selection import train_test_split, KFold
+from sklearn.model_selection import KFold
 from sklearn.preprocessing import minmax_scale
 from statistics import mode
 
@@ -200,7 +196,6 @@ def main():
     for i in predictions:
       majorities.append(mode(i))
 
-  #WHAT IS THIS??
   y_test = testing_data[0]["label"]
 
   accuracy = accuracy_score(y_test, majorities)
